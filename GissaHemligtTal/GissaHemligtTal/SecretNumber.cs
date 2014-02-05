@@ -22,7 +22,10 @@ namespace GissaHemligtTal
 
         bool CanMakeGuess
         {
-            get;
+            get
+            {
+                return _previousGuesses.Count == 7;
+            }
         }
         int Count
         {
@@ -61,21 +64,25 @@ namespace GissaHemligtTal
         }
         Outcome MakeGuess(int guess)
         {
+            Outcome result;
             if (CanMakeGuess)
             {
                 if (guess < 1 || guess > 100)
                     throw new ArgumentOutOfRangeException();
                 if (_previousGuesses.Contains(guess))
-                    return GissaHemligtTal.Outcome.PreviosuGuess;
+                    result = GissaHemligtTal.Outcome.PreviosuGuess;
                 if (guess == _number)
-                    return GissaHemligtTal.Outcome.Correct;
+                    result = GissaHemligtTal.Outcome.Correct;
                 if (guess > _number)
-                    return GissaHemligtTal.Outcome.High;
+                    result = GissaHemligtTal.Outcome.High;
                 if (guess < _number)
-                    return GissaHemligtTal.Outcome.Low;
+                    result = GissaHemligtTal.Outcome.Low;
+                result = GissaHemligtTal.Outcome.Indefinite;
             }
             else
-                return GissaHemligtTal.Outcome.NoMoreGuesses;
+                result = GissaHemligtTal.Outcome.NoMoreGuesses;
+
+            return result;
         }
         SecretNumber()
         {
