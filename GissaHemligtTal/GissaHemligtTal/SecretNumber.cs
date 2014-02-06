@@ -55,7 +55,7 @@ namespace GissaHemligtTal
                 return _previousGuesses.AsReadOnly();
             }
         }
-        void Initialize()
+        public void Initialize()
         {
             Random random = new Random();
             _number = random.Next(1, 101);
