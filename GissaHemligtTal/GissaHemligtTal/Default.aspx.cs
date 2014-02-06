@@ -23,9 +23,13 @@ namespace GissaHemligtTal
         {
             if(Page.IsValid)
             {
+                SecretNumber sn = (SecretNumber)Page.Session["secretnumber"];
                 int guess = int.Parse(Guess.Text);
-                Outcome outcome = ((SecretNumber)Page.Session["secretnumber"]).MakeGuess(guess);
-                Resultat.Text += outcome.ToString();
+                Outcome outcome = sn.MakeGuess(guess);
+                foreach(int i in sn.PreviousGuesses)
+                {
+                    Resultat.Text += i.ToString();
+                }
                 //Number.Text += ((SecretNumber)Page.Session["secretnumber"]).Number;
                 switch(outcome)
                 {
@@ -36,7 +40,7 @@ namespace GissaHemligtTal
                         Resultat.Text = "Correct!";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;
-                        Number.Text = "Numret är " + ((SecretNumber)Page.Session["secretnumber"]).Number.ToString();
+                        Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.Low:
                         Resultat.Text += "Too low!";
@@ -45,7 +49,7 @@ namespace GissaHemligtTal
                         Resultat.Text = "You got no more guesses";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;
-                        Number.Text = "Numret är " + ((SecretNumber)Page.Session["secretnumber"]).Number.ToString();
+                        Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.PreviosuGuess:
                         Resultat.Text += "You've already guessed that before";

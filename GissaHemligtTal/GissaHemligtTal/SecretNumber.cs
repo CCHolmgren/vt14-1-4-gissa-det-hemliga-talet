@@ -38,7 +38,7 @@ namespace GissaHemligtTal
         {
             get
             {
-                if (CanMakeGuess)
+                if (Count < MaxNumberOfGuesses)
                     return null;
                 return _number;
             }
@@ -48,7 +48,7 @@ namespace GissaHemligtTal
             get;
             set;
         }
-        IEnumerable<int> PreviousGuesses
+        public IEnumerable<int> PreviousGuesses
         {
             get
             {
