@@ -24,7 +24,7 @@ namespace GissaHemligtTal
         {
             get
             {
-                return _previousGuesses.Count != MaxNumberOfGuesses;
+                return _previousGuesses.Count < MaxNumberOfGuesses;
             }
         }
         int Count
@@ -66,7 +66,6 @@ namespace GissaHemligtTal
         {
             if (!CanMakeGuess)
                 return GissaHemligtTal.Outcome.NoMoreGuesses;
-
             if (guess < 1 || guess > 100)
             {
                 throw new ArgumentOutOfRangeException();
@@ -77,8 +76,12 @@ namespace GissaHemligtTal
             }
             if (guess == _number)
             {
-                _previousGuesses.Add(guess);
+                //_previousGuesses.Add(guess);
                 return GissaHemligtTal.Outcome.Correct;
+            }
+            if (Count == MaxNumberOfGuesses - 1)
+            {
+                return GissaHemligtTal.Outcome.NoMoreGuesses;
             }
             if (guess > _number)
             {
