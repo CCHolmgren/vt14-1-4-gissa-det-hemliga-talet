@@ -5,7 +5,7 @@ using System.Web;
 
 namespace GissaHemligtTal
 {
-    enum Outcome
+    public enum Outcome
     {
         Indefinite,
         Low,
@@ -18,13 +18,13 @@ namespace GissaHemligtTal
     {
         const int MaxNumberOfGuesses = 7;
         int _number;
-        List<int> _previousGuesses;
+        public List<int> _previousGuesses;
 
         bool CanMakeGuess
         {
             get
             {
-                return _previousGuesses.Count == 7;
+                return _previousGuesses.Count != MaxNumberOfGuesses;
             }
         }
         int Count
@@ -34,12 +34,12 @@ namespace GissaHemligtTal
                 return _previousGuesses.Count;
             }
         }
-        int? Number
+        public int? Number
         {
             get
             {
-                if (CanMakeGuess)
-                    return null;
+                //if (CanMakeGuess)
+                //    return null;
                 return _number;
             }
         }
@@ -62,29 +62,42 @@ namespace GissaHemligtTal
             _previousGuesses.Clear();
             Outcome = GissaHemligtTal.Outcome.Indefinite;
         }
-        Outcome MakeGuess(int guess)
+        public Outcome MakeGuess(int guess)
         {
-            Outcome result;
-            if (CanMakeGuess)
-            {
-                if (guess < 1 || guess > 100)
-                    throw new ArgumentOutOfRangeException();
-                if (_previousGuesses.Contains(guess))
-                    result = GissaHemligtTal.Outcome.PreviosuGuess;
-                if (guess == _number)
-                    result = GissaHemligtTal.Outcome.Correct;
-                if (guess > _number)
-                    result = GissaHemligtTal.Outcome.High;
-                if (guess < _number)
-                    result = GissaHemligtTal.Outcome.Low;
-                result = GissaHemligtTal.Outcome.Indefinite;
-            }
-            else
-                result = GissaHemligtTal.Outcome.NoMoreGuesses;
+            if (!CanMakeGuess)
+                return GissaHemligtTal.Outcome.NoMoreGuesses;
 
-            return result;
+            if (guess < 1 || guess > 100)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (_previousGuesses.Contains(guess))
+            {
+                return GissaHemligtTal.Outcome.PreviosuGuess;
+            }
+            if (guess == _number)
+            {
+                _previousGuesses.Add(guess);
+                return GissaHemligtTal.Outcome.Correct;
+            }
+            if (guess > _number)
+            {
+                _previousGuesses.Add(guess);
+                return GissaHemligtTal.Outcome.High;
+            }
+            if (guess < _number)
+            {
+                _previousGuesses.Add(guess);
+                return GissaHemligtTal.Outcome.Low;
+            }
+
+              //  return GissaHemligtTal.Outcome.Indefinite;
+
+            //    return GissaHemligtTal.Outcome.NoMoreGuesses;
+
+            return GissaHemligtTal.Outcome.Indefinite;
         }
-        SecretNumber()
+        public SecretNumber()
         {
             _previousGuesses = new List<int>(7);
             Initialize();
