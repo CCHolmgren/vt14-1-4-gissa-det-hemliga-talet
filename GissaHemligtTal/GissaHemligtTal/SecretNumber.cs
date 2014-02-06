@@ -38,8 +38,8 @@ namespace GissaHemligtTal
         {
             get
             {
-                //if (CanMakeGuess)
-                //    return null;
+                if (CanMakeGuess)
+                    return null;
                 return _number;
             }
         }
