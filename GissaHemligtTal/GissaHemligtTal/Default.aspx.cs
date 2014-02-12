@@ -40,6 +40,7 @@ namespace GissaHemligtTal
                         Resultat.Text = "Correct!";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;
+                        Guess.Enabled = false;
                         Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.Low:
@@ -49,6 +50,7 @@ namespace GissaHemligtTal
                         Resultat.Text = "You got no more guesses";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;
+                        Guess.Enabled = false;
                         Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.PreviosuGuess:
