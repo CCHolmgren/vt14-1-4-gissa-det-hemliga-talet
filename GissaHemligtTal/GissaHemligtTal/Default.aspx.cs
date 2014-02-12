@@ -21,6 +21,7 @@ namespace GissaHemligtTal
 
         protected void Unnamed2_Click(object sender, EventArgs e)
         {
+            Guess.Focus();
             if(Page.IsValid)
             {
                 SecretNumber sn = (SecretNumber)Page.Session["secretnumber"];
