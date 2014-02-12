@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Main.css" />
+    <Content Include="Main.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
