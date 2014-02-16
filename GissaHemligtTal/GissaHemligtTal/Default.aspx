@@ -9,27 +9,30 @@
     <link href="Main.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>Gissa det hemliga talet</h1>
     <form id="form1" runat="server">
     <div>
         <ol>
+            <!--Validation-->
             <li>
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-            </li>
-            <li>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Skriv in något i fältet." EnableViewState="True" Visible="True" ControlToValidate="Guess" Display="None" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
                 <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Skriv in ett värde mellan 1 och 100." Type="Integer" MaximumValue="100" MinimumValue="1" Display="None" ControlToValidate="Guess" ValidateRequestMode="Enabled"></asp:RangeValidator>
             </li>
+            <!--Input and GuessButton-->
             <li>
                 <asp:Label Text="Ange ett tal mellan 1 och 100." runat="server" />
                 <asp:TextBox runat="server" ID="Guess" CausesValidation="True"/>
                 <asp:Button Text="Skicka gissning" runat="server" OnClick="Unnamed2_Click" ID="GuessButton" />
             </li>
+            <!--Number, the correct number when guessing has ended-->
             <li>
                 <asp:Label Text="Number" runat="server" ID="Number" />
             </li>
             <li>
                 <asp:Label Text="" runat="server" ID="Resultat"/>
             </li>
+            <!--Resetbutton-->
             <li>
                 <asp:Button Text="Återställ" runat="server" ID="ResetButton" Visible="false" OnClick="ResetButton_Click"/>
             </li>

@@ -12,6 +12,7 @@ namespace GissaHemligtTal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //If it's not a postback then we got a GET request, and then we can just initiate a new SN and store it in the Page.Session
             if (!Page.IsPostBack)
             {
                 SecretNumber sn = new SecretNumber();
@@ -27,10 +28,12 @@ namespace GissaHemligtTal
                 SecretNumber sn = (SecretNumber)Page.Session["secretnumber"];
                 int guess = int.Parse(Guess.Text);
                 Outcome outcome = sn.MakeGuess(guess);
+
                 foreach(int i in sn.PreviousGuesses)
                 {
                     Resultat.Text += i.ToString() + ", ";
                 }
+
                 switch(outcome)
                 {
                     case GissaHemligtTal.Outcome.High:
@@ -68,9 +71,12 @@ namespace GissaHemligtTal
 
         protected void ResetButton_Click(object sender, EventArgs e)
         {
+            //Reset the Secretnumber stored in Page.Session
             ((SecretNumber)Page.Session["secretnumber"]).Initialize();
+            //Remove the button we don't want
             ResetButton.Visible = false;
             GuessButton.Enabled = true;
+            //Reset the text values
             Guess.Text = "";
             Resultat.Text = "Resultat";
             Number.Text = "Number";
