@@ -25,17 +25,20 @@
                 <asp:TextBox runat="server" ID="Guess" CausesValidation="True"/>
                 <asp:Button Text="Skicka gissning" runat="server" OnClick="Unnamed2_Click" ID="GuessButton" />
             </li>
-            <!--Number, the correct number when guessing has ended-->
-            <li>
-                <asp:Label Text="Number" runat="server" ID="Number" />
-            </li>
+            <asp:PlaceHolder ID="PlaceHolder1" Visible="false" runat="server">
+                <!--Number, the correct number when guessing has ended-->
+                <li>
+                    <asp:Label Text="Number" runat="server" ID="Number" />
+                </li>
+                <!--Resetbutton-->
+                <li>
+                    <asp:Button Text="Återställ" runat="server" ID="ResetButton" OnClick="ResetButton_Click"/>
+                </li>
+            </asp:PlaceHolder>
             <li>
                 <asp:Label Text="" runat="server" ID="Resultat"/>
             </li>
-            <!--Resetbutton-->
-            <li>
-                <asp:Button Text="Återställ" runat="server" ID="ResetButton" Visible="false" OnClick="ResetButton_Click"/>
-            </li>
+            
         </ol>
     </div>
     </form>

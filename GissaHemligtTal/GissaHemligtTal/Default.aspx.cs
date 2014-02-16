@@ -42,9 +42,10 @@ namespace GissaHemligtTal
                     case GissaHemligtTal.Outcome.Correct:
                         Resultat.Text = "Correct!";
                         GuessButton.Enabled = false;
-                        ResetButton.Visible = true;
+                        //ResetButton.Visible = true;
                         Guess.Enabled = false;
-                        Number.Text = "Numret är " + sn.Number.Value;
+                        PlaceHolder1.Visible = true;
+                        Number.Text = "The number is " + sn.Number.Value.ToString();
                         break;
                     case GissaHemligtTal.Outcome.Low:
                         Resultat.Text += " Too low!";
@@ -52,8 +53,9 @@ namespace GissaHemligtTal
                     case GissaHemligtTal.Outcome.NoMoreGuesses:
                         Resultat.Text = "You got no more guesses";
                         GuessButton.Enabled = false;
-                        ResetButton.Visible = true;
+                        //ResetButton.Visible = true;
                         Guess.Enabled = false;
+                        PlaceHolder1.Visible = true;
                         Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.PreviousGuess:
@@ -73,8 +75,9 @@ namespace GissaHemligtTal
         {
             //Reset the Secretnumber stored in Page.Session
             ((SecretNumber)Page.Session["secretnumber"]).Initialize();
+            PlaceHolder1.Visible = false;
             //Remove the button we don't want
-            ResetButton.Visible = false;
+            //ResetButton.Visible = false;
             GuessButton.Enabled = true;
             //Reset the text values
             Guess.Text = "";

@@ -67,6 +67,15 @@ namespace GissaHemligtTal {
         protected global::System.Web.UI.WebControls.Button GuessButton;
         
         /// <summary>
+        /// PlaceHolder1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
+        
+        /// <summary>
         /// Number control.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace GissaHemligtTal {
         protected global::System.Web.UI.WebControls.Label Number;
         
         /// <summary>
-        /// Resultat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Resultat;
-        
-        /// <summary>
         /// ResetButton control.
         /// </summary>
         /// <remarks>
@@ -92,5 +92,14 @@ namespace GissaHemligtTal {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ResetButton;
+        
+        /// <summary>
+        /// Resultat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Resultat;
     }
 }
