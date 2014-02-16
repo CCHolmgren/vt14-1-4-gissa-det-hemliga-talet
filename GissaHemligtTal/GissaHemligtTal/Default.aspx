@@ -28,7 +28,7 @@
                 <asp:Label Text="Number" runat="server" ID="Number" />
             </li>
             <li>
-                <asp:Label Text="Resultat" runat="server" ID="Resultat"/>
+                <asp:Label Text="" runat="server" ID="Resultat"/>
             </li>
             <li>
                 <asp:Button Text="Återställ" runat="server" ID="ResetButton" Visible="false" OnClick="ResetButton_Click"/>

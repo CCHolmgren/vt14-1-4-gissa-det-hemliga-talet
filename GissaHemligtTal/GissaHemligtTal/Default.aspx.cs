@@ -29,13 +29,12 @@ namespace GissaHemligtTal
                 Outcome outcome = sn.MakeGuess(guess);
                 foreach(int i in sn.PreviousGuesses)
                 {
-                    Resultat.Text += i.ToString();
+                    Resultat.Text += i.ToString() + ", ";
                 }
-                //Number.Text += ((SecretNumber)Page.Session["secretnumber"]).Number;
                 switch(outcome)
                 {
                     case GissaHemligtTal.Outcome.High:
-                        Resultat.Text += "Too high! ";
+                        Resultat.Text += " Too high! ";
                         break;
                     case GissaHemligtTal.Outcome.Correct:
                         Resultat.Text = "Correct!";
@@ -45,7 +44,7 @@ namespace GissaHemligtTal
                         Number.Text = "Numret är " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.Low:
-                        Resultat.Text += "Too low!";
+                        Resultat.Text += " Too low!";
                         break;
                     case GissaHemligtTal.Outcome.NoMoreGuesses:
                         Resultat.Text = "You got no more guesses";
@@ -54,15 +53,14 @@ namespace GissaHemligtTal
                         Guess.Enabled = false;
                         Number.Text = "Numret är " + sn.Number.Value;
                         break;
-                    case GissaHemligtTal.Outcome.PreviosuGuess:
-                        Resultat.Text += "You've already guessed that before";
+                    case GissaHemligtTal.Outcome.PreviousGuess:
+                        Resultat.Text += " You've already guessed that before";
                         break;
                     case GissaHemligtTal.Outcome.Indefinite:
                         Resultat.Text = "Something is broken, blame Tyler";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;
                         break;
-
                 }
             }
             

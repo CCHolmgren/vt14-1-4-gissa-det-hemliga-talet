@@ -12,7 +12,7 @@ namespace GissaHemligtTal
         High,
         Correct,
         NoMoreGuesses,
-        PreviosuGuess
+        PreviousGuess
     }
     public class SecretNumber
     {
@@ -24,7 +24,7 @@ namespace GissaHemligtTal
         {
             get
             {
-                return _previousGuesses.Count != MaxNumberOfGuesses;
+                return Outcome != GissaHemligtTal.Outcome.NoMoreGuesses && Outcome != GissaHemligtTal.Outcome.Correct;
             }
         }
         int Count
@@ -65,40 +65,48 @@ namespace GissaHemligtTal
         public Outcome MakeGuess(int guess)
         {
             if (!CanMakeGuess)
+            {
+                Outcome = GissaHemligtTal.Outcome.NoMoreGuesses;
                 return GissaHemligtTal.Outcome.NoMoreGuesses;
+            }
             if (guess < 1 || guess > 100)
             {
                 throw new ArgumentOutOfRangeException();
             }
             if (_previousGuesses.Contains(guess))
             {
-                return GissaHemligtTal.Outcome.PreviosuGuess;
+                Outcome = GissaHemligtTal.Outcome.PreviousGuess;
+                return GissaHemligtTal.Outcome.PreviousGuess;
             }
             if (guess == _number)
             {
                 _previousGuesses.Add(guess);
+                Outcome = GissaHemligtTal.Outcome.Correct;
                 return GissaHemligtTal.Outcome.Correct;
             }
             if (Count == MaxNumberOfGuesses - 1)
             {
                 _previousGuesses.Add(guess);
+                Outcome = GissaHemligtTal.Outcome.NoMoreGuesses;
                 return GissaHemligtTal.Outcome.NoMoreGuesses;
             }
             if (guess > _number)
             {
                 _previousGuesses.Add(guess);
+                Outcome = GissaHemligtTal.Outcome.High;
                 return GissaHemligtTal.Outcome.High;
             }
             if (guess < _number)
             {
                 _previousGuesses.Add(guess);
+                Outcome = GissaHemligtTal.Outcome.Low;
                 return GissaHemligtTal.Outcome.Low;
             }
 
               //  return GissaHemligtTal.Outcome.Indefinite;
 
             //    return GissaHemligtTal.Outcome.NoMoreGuesses;
-
+            Outcome = GissaHemligtTal.Outcome.Indefinite;
             return GissaHemligtTal.Outcome.Indefinite;
         }
         public SecretNumber()
