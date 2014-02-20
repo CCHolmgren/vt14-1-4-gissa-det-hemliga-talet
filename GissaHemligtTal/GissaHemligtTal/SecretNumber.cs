@@ -67,7 +67,7 @@ namespace GissaHemligtTal
             set;
         }
         /// <summary>
-        /// We don't want to send of a list since it can be modified, so we use a ReadOnlyCollection instead
+        /// We don't want to send off a list since it can be modified, so we use a ReadOnlyCollection instead
         /// </summary>
         public IEnumerable<int> PreviousGuesses
         {
@@ -77,7 +77,7 @@ namespace GissaHemligtTal
             }
         }
         /// <summary>
-        /// Resets the values so we can start from the beginning
+        /// Initializes the values so we can start from the beginning
         /// </summary>
         public void Initialize()
         {
