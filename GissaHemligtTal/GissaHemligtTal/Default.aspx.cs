@@ -74,7 +74,7 @@ namespace GissaHemligtTal
                         //But if we do, just redirect to the Error page
                     case GissaHemligtTal.Outcome.Indefinite:
                         Response.Redirect("Error.aspx");
-                        /*Resultat.Text = "Something is broken, blame Tyler";
+                        /*Resultat.Text = "Something is broken";
                         GuessButton.Enabled = false;
                         ResetButton.Visible = true;*/
                         break;
