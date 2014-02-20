@@ -62,6 +62,7 @@ namespace GissaHemligtTal
                         Guess.Enabled = false;
                         PlaceHolder1.Visible = true;
                         Number.Text = "Numret var: " + sn.Number.Value.ToString();
+                        ResetButton.Focus();
                         break;
                     case GissaHemligtTal.Outcome.NoMoreGuesses:
                         Resultat.Text = "Du har inga fler gissningar.";
@@ -69,6 +70,7 @@ namespace GissaHemligtTal
                         Guess.Enabled = false;
                         PlaceHolder1.Visible = true;
                         Number.Text = "Numret var: " + sn.Number.Value;
+                        ResetButton.Focus();
                         break;
                         //We should never get here
                         //But if we do, just redirect to the Error page
