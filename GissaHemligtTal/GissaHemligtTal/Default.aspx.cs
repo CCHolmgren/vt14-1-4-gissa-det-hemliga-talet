@@ -37,29 +37,29 @@ namespace GissaHemligtTal
                 switch(outcome)
                 {
                     case GissaHemligtTal.Outcome.High:
-                        Resultat.Text += " Too high! ";
-                        break;
-                    case GissaHemligtTal.Outcome.Correct:
-                        Resultat.Text = "Correct!";
-                        GuessButton.Enabled = false;
-                        //ResetButton.Visible = true;
-                        Guess.Enabled = false;
-                        PlaceHolder1.Visible = true;
-                        Number.Text = "The number is " + sn.Number.Value.ToString();
+                        Resultat.Text += " För högt!";
                         break;
                     case GissaHemligtTal.Outcome.Low:
-                        Resultat.Text += " Too low!";
+                        Resultat.Text += " För lågt!";
                         break;
-                    case GissaHemligtTal.Outcome.NoMoreGuesses:
-                        Resultat.Text = "You got no more guesses";
+                    case GissaHemligtTal.Outcome.PreviousGuess:
+                        Resultat.Text += " Du har redan gissat det förut.";
+                        break;
+                    case GissaHemligtTal.Outcome.Correct:
+                        Resultat.Text = "Rätt!";
                         GuessButton.Enabled = false;
                         //ResetButton.Visible = true;
                         Guess.Enabled = false;
                         PlaceHolder1.Visible = true;
-                        Number.Text = "Numret är " + sn.Number.Value;
+                        Number.Text = "Numret var: " + sn.Number.Value.ToString();
                         break;
-                    case GissaHemligtTal.Outcome.PreviousGuess:
-                        Resultat.Text += " You've already guessed that before";
+                    case GissaHemligtTal.Outcome.NoMoreGuesses:
+                        Resultat.Text = "Du har inga fler gissningar.";
+                        GuessButton.Enabled = false;
+                        //ResetButton.Visible = true;
+                        Guess.Enabled = false;
+                        PlaceHolder1.Visible = true;
+                        Number.Text = "Numret var: " + sn.Number.Value;
                         break;
                     case GissaHemligtTal.Outcome.Indefinite:
                         Resultat.Text = "Something is broken, blame Tyler";
